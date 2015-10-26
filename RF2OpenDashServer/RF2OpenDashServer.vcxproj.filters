@@ -24,9 +24,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="base64.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="socket.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -51,9 +48,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="base64.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="socket.cpp">

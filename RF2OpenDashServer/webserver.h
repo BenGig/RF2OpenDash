@@ -27,6 +27,7 @@
 
 #include <string>
 #include <map>
+#include "stdafx.h"
 
 class Socket;
 

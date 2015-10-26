@@ -24,6 +24,7 @@
    René Nyffenegger rene.nyffenegger@adp-gmbh.ch
 */
 
+#include "stdafx.h"
 
 #include "UrlHelper.h"
 #include "Tracer.h"

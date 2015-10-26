@@ -24,9 +24,11 @@
    René Nyffenegger rene.nyffenegger@adp-gmbh.ch
 */
 
+#include "stdafx.h"
+
 #include <iostream>
 
-#include "Socket.h"
+#include "socket.h"
 
 using namespace std;
 

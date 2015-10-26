@@ -24,6 +24,8 @@
    René Nyffenegger rene.nyffenegger@adp-gmbh.ch
 */
 
+#include "stdafx.h"
+
 #include "stdHelpers.h"
 #include <algorithm>
 #include <cctype>

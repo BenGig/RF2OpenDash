@@ -26,6 +26,8 @@
    Thanks to Tom Lynn who pointed out an error in this source code.
 */
 
+#include "stdafx.h"
+
 #include <ctime>
 #include <process.h>
 #include <iostream>
@@ -33,7 +35,6 @@
 #include <map>
 #include <sstream>
 //<process.h>
-
 
 #include "webserver.h"
 #include "socket.h"
