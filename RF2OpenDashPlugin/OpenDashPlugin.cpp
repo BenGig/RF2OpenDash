@@ -1,18 +1,6 @@
 //‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
 //›                                                                         ﬁ
-//› Module: Internals Example Source File                                   ﬁ
-//›                                                                         ﬁ
-//› Description: Declarations for the Internals Example Plugin              ﬁ
-//›                                                                         ﬁ
-//›                                                                         ﬁ
-//› This source code module, and all information, data, and algorithms      ﬁ
-//› associated with it, are part of CUBE technology (tm).                   ﬁ
-//›                 PROPRIETARY AND CONFIDENTIAL                            ﬁ
-//› Copyright (c) 1996-2008 Image Space Incorporated.  All rights reserved. ﬁ
-//›                                                                         ﬁ
-//›                                                                         ﬁ
-//› Change history:                                                         ﬁ
-//›   tag.2005.11.30: created                                               ﬁ
+//› Write rFactor2 data to memory mapped file                               ﬁ
 //›                                                                         ﬁ
 //ﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ
 
@@ -56,33 +44,6 @@ void OpenDashPlugin::Log(const char * const msg)
 	}
 }
 
-void OpenDashPlugin::WriteToAllExampleOutputFiles(const char * const openStr, const char * const msg)
-{
-	FILE *fo;
-
-	fo = fopen("c:\\tmp\\ExampleInternalsTelemetryOutput.txt", openStr);
-	if (fo != NULL)
-	{
-		fprintf(fo, "%s\n", msg);
-		fclose(fo);
-	}
-
-	fo = fopen("c:\\tmp\\ExampleInternalsGraphicsOutput.txt", openStr);
-	if (fo != NULL)
-	{
-		fprintf(fo, "%s\n", msg);
-		fclose(fo);
-	}
-
-	fo = fopen("c:\\tmp\\ExampleInternalsScoringOutput.txt", openStr);
-	if (fo != NULL)
-	{
-		fprintf(fo, "%s\n", msg);
-		fclose(fo);
-	}
-}
-
-
 void OpenDashPlugin::Startup(long version)
 {
 	memMapFile = CreateFileMapping(
@@ -98,7 +59,7 @@ void OpenDashPlugin::Startup(long version)
 		Log("Could not open memory mapping file");
 		return;
 	}
-	Log("Memory mapping file opened");
+	// Log("Memory mapping file opened");
 
 	pBuf = (LPTSTR)MapViewOfFile(memMapFile,   // handle to map object
 		FILE_MAP_ALL_ACCESS, // read/write permission
@@ -146,7 +107,7 @@ void OpenDashPlugin::ExitRealtime()
 
 void OpenDashPlugin::UpdateTelemetry(const TelemInfoV01 &info)
 {
-	Log("Updating telemetry");
+	// Log("Updating telemetry");
 	CopyMemory(&data.telemInfoV01, &info, sizeof(info));
 	WriteDataToMemory();
 }
