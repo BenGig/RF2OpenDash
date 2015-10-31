@@ -195,7 +195,7 @@ void OpenDashPlugin::UpdateScoring(const ScoringInfoV01 &info)
 	data.event.onPathWetness = info.mOnPathWetness;
 	data.event.offPathWetness = info.mOffPathWetness;
 
-	for (int i = 0; i++; i < info.mNumVehicles)
+	for (int i = 0; i < info.mNumVehicles;  i++)
 	{
 		data.scoring[i].isPlayer = info.mVehicle[i].mIsPlayer;
 		strcpy(data.scoring[i].driverName, info.mVehicle[i].mDriverName);
