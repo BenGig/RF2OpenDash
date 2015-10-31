@@ -11,7 +11,7 @@
 
 int main()
 {
-	TransferredData data;
+	struct UnifiedRfData data;
 
 	HANDLE hMapFile;
 	LPCTSTR pBuf;
@@ -46,7 +46,7 @@ int main()
 
 	memcpy(&data, pBuf, sizeof(data));
 
-	printf(data.scoringInfoV01.mTrackName);
+	printf(data.event.trackName);
 	//MessageBox(NULL, pBuf, info.mTrackName, MB_OK);
 
 	UnmapViewOfFile(pBuf);

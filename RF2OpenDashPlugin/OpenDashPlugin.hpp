@@ -25,6 +25,7 @@ class OpenDashPlugin : public InternalsPluginV06
 {
 
 public:
+	static const long rFactorVersion; // '2', this code provides rFactor 2 structures
 
 	// Constructor/destructor
 	OpenDashPlugin() {}
@@ -38,8 +39,8 @@ public:
 	void EnterRealtime();          // entering realtime
 	void ExitRealtime();           // exiting realtime
 
-	void StartSession() { return; };           // session has started
-	void EndSession() { return; };             // session has ended
+	void StartSession();           // session has started
+	void EndSession();             // session has ended
 
 								   // GAME OUTPUT
 	long WantsTelemetryUpdates() { return(1); } // CHANGE TO 1 TO ENABLE TELEMETRY EXAMPLE!
@@ -82,13 +83,12 @@ private:
 
 	void WriteDataToMemory();
 
-	void WriteToAllExampleOutputFiles(const char * const openStr, const char * const msg);
 	void Log(const char * const msg);
 
 	HANDLE memMapFile;
 	LPCTSTR pBuf;
 
-	TransferredData data;
+	UnifiedRfData data;
 };
 
 
