@@ -65,7 +65,7 @@ struct WheelInfo
 	double tireLoad;  // Newton
 	double gripFract;              // an approximation of what fraction of the contact patch is sliding
 	double pressure;  // kPa
-	double temperature; // Kelvin, left/center/right (not inside/center/outside!)
+	double temperature[3]; // Kelvin, left/center/right (not inside/center/outside!)
 	double wear;
 	bool flat;
 	bool detached;

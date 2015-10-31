@@ -136,7 +136,17 @@ void OpenDashPlugin::UpdateTelemetry(const TelemInfoV01 &info)
 	data.telemetry.unfilteredBrake = info.mUnfilteredBrake;
 	data.telemetry.unfilteredSteering = info.mUnfilteredSteering;
 	data.telemetry.unfilteredClutch = info.mUnfilteredClutch;
-	memcpy(data.telemetry.wheel, info.mWheel, sizeof(info.mWheel)); 
+	for (int i = 0; i < 4; i++)
+	{
+		data.telemetry.wheel[i].brakeTemp = info.mWheel[i].mBrakeTemp;
+		data.telemetry.wheel[i].detached = info.mWheel[i].mDetached;
+		data.telemetry.wheel[i].flat = info.mWheel[i].mFlat;
+		data.telemetry.wheel[i].gripFract = info.mWheel[i].mGripFract;
+		data.telemetry.wheel[i].pressure = info.mWheel[i].mPressure;
+		memcpy(data.telemetry.wheel[i].temperature, info.mWheel[i].mTemperature, sizeof(info.mWheel[i].mTemperature));
+		data.telemetry.wheel[i].tireLoad = info.mWheel[i].mTireLoad;
+		data.telemetry.wheel[i].wear = info.mWheel[i].mWear;
+	}
 	data.telemetry.fuel = info.mFuel;
 	data.telemetry.engineMaxRPM = info.mEngineMaxRPM;
 	data.telemetry.scheduledPitstops = info.mScheduledStops;
@@ -221,7 +231,7 @@ void OpenDashPlugin::UpdateScoring(const ScoringInfoV01 &info)
 		data.scoring[i].timeBehindLeader = info.mVehicle[i].mTimeBehindLeader;
 		data.scoring[i].lapsBehindLeader = info.mVehicle[i].mLapsBehindLeader;
 		data.scoring[i].lapStartTime = info.mVehicle[i].mLapStartET;
-		data.scoring[i].speed = sqrtl(powl(info.mVehicle[i].mLocalVel.x, 2) * powl(info.mVehicle[i].mLocalVel.y, 2) * powl(info.mVehicle[i].mLocalVel.z, 2));
+		data.scoring[i].speed = sqrt(pow(info.mVehicle[i].mLocalVel.x, 2) + pow(info.mVehicle[i].mLocalVel.y, 2) + pow(info.mVehicle[i].mLocalVel.z, 2));
 		
 		// Extension for rFactor 2
 		data.scoring[i].headlights = info.mVehicle[i].mHeadlights;

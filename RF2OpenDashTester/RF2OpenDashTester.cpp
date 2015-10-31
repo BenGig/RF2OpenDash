@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include "InternalsPlugin.hpp"
 #include "DataTransfer.hpp"
-#include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
 // #pragma comment(lib, "user32.lib")
@@ -47,7 +46,12 @@ int main()
 	memcpy(&data, pBuf, sizeof(data));
 
 	printf(data.event.trackName);
-	//MessageBox(NULL, pBuf, info.mTrackName, MB_OK);
+	printf("\n");
+	for (int i=0; i < data.event.numVehicles; i++)
+	{
+		printf(data.scoring[i].driverName);
+		printf("\n");
+	}
 
 	UnmapViewOfFile(pBuf);
 
