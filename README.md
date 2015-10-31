@@ -1,16 +1,12 @@
 # RF2OpenDash
 
-VisualStudio 2015 Community Edition
+Playing around with a telemetry and standings server for rFactor 2 (rF1 planned).
 
-Playing around with a telemetry and standings server for rFactor 2
-
-The rFactor plugin writes a structure to shared memory.   
-
-All common stuff is defined in include/DataTransfer.hpp
+All common stuff is defined in include/DataTransfer.hpp, most importantly the UnifiedRfData which is written to shared memory
 
 # What is Written: Transfer Structure
 
-Currently a collection of items taken 1:1 from the rF plugin environment. To be refined.
+See UnifiedRfData.
 
 # When is it written
 
@@ -20,3 +16,8 @@ Writes are triggered in the plugin callback functions: updateTelemetry, updateSc
 
 The shared memory is accessed by the name defined in the common include file. 
 See RF2OpenDashTester.cpp for an example how to read the data structure.
+
+
+
+VisualStudio 2015 Community Edition
+
