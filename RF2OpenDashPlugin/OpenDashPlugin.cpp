@@ -146,6 +146,23 @@ void OpenDashPlugin::UpdateTelemetry(const TelemInfoV01 &info)
 		memcpy(data.telemetry.wheel[i].temperature, info.mWheel[i].mTemperature, sizeof(info.mWheel[i].mTemperature));
 		data.telemetry.wheel[i].tireLoad = info.mWheel[i].mTireLoad;
 		data.telemetry.wheel[i].wear = info.mWheel[i].mWear;
+		data.telemetry.wheel[i].rotation = info.mWheel[i].mRotation;
+		data.telemetry.wheel[i].suspensionDeflection = info.mWheel[i].mSuspensionDeflection;
+		data.telemetry.wheel[i].rideHeight = info.mWheel[i].mRideHeight;
+		data.telemetry.wheel[i].lateralForce = info.mWheel[i].mLateralForce;
+		data.telemetry.wheel[i].suspensionForce = info.mWheel[i].mSuspForce;
+		data.telemetry.wheel[i].brakePressure = info.mWheel[i].mBrakePressure;
+		data.telemetry.wheel[i].lateralPatchVel = info.mWheel[i].mLateralPatchVel;
+		data.telemetry.wheel[i].longitudinalPatchVel = info.mWheel[i].mLongitudinalPatchVel;
+		data.telemetry.wheel[i].lateralGroundVel = info.mWheel[i].mLateralGroundVel;
+		data.telemetry.wheel[i].longitudinalGroundVel = info.mWheel[i].mLongitudinalGroundVel;
+		data.telemetry.wheel[i].camber = info.mWheel[i].mCamber;
+		data.telemetry.wheel[i].longitudinalForce = info.mWheel[i].mLongitudinalForce;
+		data.telemetry.wheel[i].verticalTireDeflection = info.mWheel[i].mVerticalTireDeflection;
+		data.telemetry.wheel[i].wheelYLocation = info.mWheel[i].mWheelYLocation;
+		data.telemetry.wheel[i].toe = info.mWheel[i].mToe;
+		data.telemetry.wheel[i].tireCarcassTemperature = info.mWheel[i].mTireCarcassTemperature;
+		memcpy(data.telemetry.wheel[i].tireInnerLayerTemperature, info.mWheel[i].mTireInnerLayerTemperature, sizeof(info.mWheel[i].mTireInnerLayerTemperature));
 	}
 	data.telemetry.fuel = info.mFuel;
 	data.telemetry.engineMaxRPM = info.mEngineMaxRPM;
@@ -153,12 +170,32 @@ void OpenDashPlugin::UpdateTelemetry(const TelemInfoV01 &info)
 	data.telemetry.overheating = info.mOverheating;
 	data.telemetry.detached = info.mDetached;  
 	memcpy(data.telemetry.dentSeverity, info.mDentSeverity, sizeof(info.mDentSeverity));
+	data.telemetry.lastImpactTime = info.mLastImpactET;
+	data.telemetry.lastImpactPos = info.mLastImpactPos;
+	data.telemetry.lastImpactMagnitude = info.mLastImpactMagnitude;
+
+	data.telemetry.pos = info.mPos;
+	data.telemetry.localVel = info.mLocalVel;
+	data.telemetry.localAccel = info.mLocalAccel;
+	memcpy(data.telemetry.orientation, info.mOri, sizeof(info.mOri));
+	data.telemetry.localRot = info.mLocalRot;
+	data.telemetry.localRotAccel = info.mLocalRotAccel;
 	
 	// Additional data provided by rFactor 2
 	data.telemetry.filteredThrottle = info.mFilteredThrottle;
 	data.telemetry.filteredBrake = info.mFilteredBrake;
 	data.telemetry.filteredSteering = info.mFilteredSteering;
 	data.telemetry.filteredClutch = info.mFilteredClutch;
+	data.telemetry.front3rdDeflection = info.mFront3rdDeflection;
+	data.telemetry.rear3rdDeflection = info.mRear3rdDeflection;
+	data.telemetry.frontWingHeight = info.mFrontWingHeight;
+	data.telemetry.frontRideHeight = info.mFrontRideHeight;
+	data.telemetry.rearRideHeight = info.mRearRideHeight;
+	data.telemetry.drag = info.mDrag;
+	data.telemetry.frontDownforce = info.mFrontDownforce;
+	data.telemetry.rearDownforce = info.mRearDownforce;
+	data.telemetry.engineTorque = info.mEngineTorque;
+	data.telemetry.currentSector = info.mCurrentSector;
 	data.telemetry.headlights = info.mHeadlights;
 	data.telemetry.speedLimiter = info.mSpeedLimiter;
 	data.telemetry.maxGears = info.mMaxGears;
@@ -196,12 +233,15 @@ void OpenDashPlugin::UpdateScoring(const ScoringInfoV01 &info)
 	data.event.gamePhase = info.mGamePhase;
 	data.event.yellowFlagState = info.mYellowFlagState;
 	memcpy(data.event.sectorFlag, info.mSectorFlag, sizeof(info.mSectorFlag));
+	data.event.startLight = info.mStartLight;
+	data.event.numRedLights = info.mNumRedLights;
 	data.event.inRealtime = info.mInRealtime;
 	strcpy(data.event.playerName, info.mPlayerName);
 	data.event.darkCloud = info.mDarkCloud;
 	data.event.raining = info.mRaining;
 	data.event.ambientTemp = info.mAmbientTemp;
 	data.event.trackTemp = info.mTrackTemp;
+	data.event.wind = info.mWind;
 	data.event.onPathWetness = info.mOnPathWetness;
 	data.event.offPathWetness = info.mOffPathWetness;
 
@@ -214,6 +254,8 @@ void OpenDashPlugin::UpdateScoring(const ScoringInfoV01 &info)
 		data.scoring[i].sector = info.mVehicle[i].mSector; // 0=sector3, 1=sector1, 2=sector2 (don't ask why)
 		data.scoring[i].finishStatus = info.mVehicle[i].mFinishStatus; // 0=none, 1=finished, 2=dnf, 3=dq
 		data.scoring[i].lapDist = info.mVehicle[i].mLapDist;
+		data.scoring[i].pathLateral = info.mVehicle[i].mPathLateral;
+		data.scoring[i].trackEdge = info.mVehicle[i].mTrackEdge;
 		data.scoring[i].bestSector1 = info.mVehicle[i].mBestSector1;
 		data.scoring[i].bestSector2 = info.mVehicle[i].mBestSector2;
 		data.scoring[i].bestLapTime = info.mVehicle[i].mBestLapTime;
@@ -232,8 +274,22 @@ void OpenDashPlugin::UpdateScoring(const ScoringInfoV01 &info)
 		data.scoring[i].lapsBehindLeader = info.mVehicle[i].mLapsBehindLeader;
 		data.scoring[i].lapStartTime = info.mVehicle[i].mLapStartET;
 		data.scoring[i].speed = sqrt(pow(info.mVehicle[i].mLocalVel.x, 2) + pow(info.mVehicle[i].mLocalVel.y, 2) + pow(info.mVehicle[i].mLocalVel.z, 2));
+		data.scoring[i].control = info.mVehicle[i].mControl;
+		data.scoring[i].pos = info.mVehicle[i].mPos;
+		data.scoring[i].localVel = info.mVehicle[i].mLocalVel;
+		data.scoring[i].localAccel = info.mVehicle[i].mLocalAccel;
+		// TODO: test copy result
+		memcpy(data.scoring[i].orientation, info.mVehicle[i].mOri, sizeof(info.mVehicle[i].mOri));
+		data.scoring[i].localRot = info.mVehicle[i].mLocalRot;
+		data.scoring[i].localRotAccel = info.mVehicle[i].mLocalRotAccel;
+
 		
 		// Extension for rFactor 2
+		data.scoring[i].slotId = info.mVehicle[i].mID;
+		data.scoring[i].timeIntoLap = info.mVehicle[i].mTimeIntoLap;
+		data.scoring[i].estimatedLapTime = info.mVehicle[i].mEstimatedLapTime;
+		strcpy(data.scoring[i].pitGroup, info.mVehicle[i].mPitGroup);
+		memcpy(data.scoring[i].upgradePack, info.mVehicle[i].mUpgradePack, sizeof(info.mVehicle[i].mUpgradePack));
 		data.scoring[i].headlights = info.mVehicle[i].mHeadlights;
 		data.scoring[i].pitState = info.mVehicle[i].mPitState; // 0=none, 1=request, 2=entering, 3=stopped, 4=exiting
 		data.scoring[i].qualification = info.mVehicle[i].mQualification;
