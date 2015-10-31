@@ -228,7 +228,6 @@ void OpenDashPlugin::UpdateScoring(const ScoringInfoV01 &info)
 		data.scoring[i].pitState = info.mVehicle[i].mPitState; // 0=none, 1=request, 2=entering, 3=stopped, 4=exiting
 		data.scoring[i].qualification = info.mVehicle[i].mQualification;
 		data.scoring[i].primaryFlag = info.mVehicle[i].mFlag; // currently only 0=green or 6=blue
-
 	}
 
 	WriteDataToMemory();
