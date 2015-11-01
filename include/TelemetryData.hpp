@@ -1,5 +1,7 @@
 #pragma once
 
+#include "DataTransfer.hpp"
+
 class TelemetryData {
 
 public:
