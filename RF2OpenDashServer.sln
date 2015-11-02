@@ -10,6 +10,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RF2OpenDashLib", "RF2OpenDashLib\RF2OpenDashLib.vcxproj", "{012FA63F-31AE-47E7-9B54-E144AA0EE6DC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RF2OpenDashServer", "RF2OpenDashServer\RF2OpenDashServer.vcxproj", "{FA321634-705C-42F8-B1F0-332EBAFD3498}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RfMockupSource", "RfMockupSource\RfMockupSource.vcxproj", "{717F768A-68E7-4042-A334-F67EC3FF1A58}"
 EndProject
 Global
