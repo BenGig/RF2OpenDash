@@ -54,7 +54,7 @@ void OpenDashPlugin::Startup(long version)
 
 	if (memMapFile == NULL)
 	{
-		Log("Could not open memory mapping file");
+		Log(TEXT("Could not open memory mapping file\n"));
 		return;
 	}
 	// Log("Memory mapping file opened");
