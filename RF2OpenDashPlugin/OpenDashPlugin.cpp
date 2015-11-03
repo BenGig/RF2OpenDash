@@ -4,8 +4,8 @@
 //Ý                                                                         Þ
 //ßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßßß
 
-#include "OpenDashPlugin.hpp"
-#include "DataTransfer.hpp"         
+#include "../include/OpenDashPlugin.hpp"
+#include "../include/DataTransfer.hpp"         
 #include <stdio.h>              // for sample output
 #include <Windows.h>
 //#include <conio.h>

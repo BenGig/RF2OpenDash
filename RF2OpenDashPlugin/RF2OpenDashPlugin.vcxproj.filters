@@ -18,11 +18,11 @@
     <ClCompile Include="OpenDashPlugin.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="TelemetryData.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OpenDashPlugin.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\DataTransfer.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -30,12 +30,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\include\PluginObjects.hpp">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\TelemetryData.hpp">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\OpenDashPlugin.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

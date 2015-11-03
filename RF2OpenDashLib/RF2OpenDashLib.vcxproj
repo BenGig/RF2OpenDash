@@ -122,10 +122,14 @@
   <ItemGroup>
     <ClInclude Include="..\include\DataTransfer.hpp" />
     <ClInclude Include="..\include\InternalsPlugin.hpp" />
+    <ClInclude Include="..\include\JsonOpenDash.hpp" />
     <ClInclude Include="..\include\SimRacingToolsDash.hpp" />
+    <ClInclude Include="..\include\OpenDash.hpp" />
     <ClInclude Include="..\include\TelemetryData.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="JsonOpenDash.cpp" />
+    <ClCompile Include="OpenDash.cpp" />
     <ClCompile Include="SimRacingToolsDash.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
