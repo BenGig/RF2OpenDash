@@ -51,7 +51,7 @@ bool RfData::Update()
 	LF_Speed = rf.data.telemetry.wheel[0].longitudinalGroundVel;
 	LF_RideHeight = rf.data.telemetry.wheel[0].rideHeight;
 	LF_BrakeTemp = rf.data.telemetry.wheel[0].brakeTemp;
-	LF_TyreSlip = rf.data.telemetry.wheel[0].lateralGroundVel;
+	LF_TyreSlip = rf.data.telemetry.wheel[0].gripFract;
 	LF_TyreLoad = rf.data.telemetry.wheel[0].tireLoad;
 	LF_TyreTempIn = rf.data.telemetry.wheel[0].temperature[2];
 	LF_TyreTempMid = rf.data.telemetry.wheel[0].temperature[1];
@@ -63,7 +63,7 @@ bool RfData::Update()
 	RF_Speed = rf.data.telemetry.wheel[1].longitudinalGroundVel;
 	RF_RideHeight = rf.data.telemetry.wheel[1].rideHeight;;
 	RF_BrakeTemp = rf.data.telemetry.wheel[1].brakeTemp;;
-	RF_TyreSlip = rf.data.telemetry.wheel[1].lateralGroundVel;
+	RF_TyreSlip = rf.data.telemetry.wheel[1].gripFract;
 	RF_TyreLoad = rf.data.telemetry.wheel[1].tireLoad;
 	RF_TyreTempIn = rf.data.telemetry.wheel[1].temperature[0];
 	RF_TyreTempMid = rf.data.telemetry.wheel[1].temperature[1];
@@ -75,7 +75,7 @@ bool RfData::Update()
 	RL_Speed = rf.data.telemetry.wheel[2].longitudinalGroundVel;
 	RL_RideHeight = rf.data.telemetry.wheel[2].rideHeight;
 	RL_BrakeTemp = rf.data.telemetry.wheel[2].brakeTemp;
-	RL_TyreSlip = rf.data.telemetry.wheel[2].lateralGroundVel;
+	RL_TyreSlip = rf.data.telemetry.wheel[2].gripFract;
 	RL_TyreLoad = rf.data.telemetry.wheel[2].tireLoad;
 	RL_TyreTempIn = rf.data.telemetry.wheel[2].temperature[2];
 	RL_TyreTempMid = rf.data.telemetry.wheel[2].temperature[1];
@@ -87,7 +87,7 @@ bool RfData::Update()
 	RF_Speed = rf.data.telemetry.wheel[3].longitudinalGroundVel;
 	RR_RideHeight = rf.data.telemetry.wheel[3].rideHeight;
 	RR_BrakeTemp = rf.data.telemetry.wheel[3].brakeTemp;
-	RR_TyreSlip = rf.data.telemetry.wheel[3].lateralGroundVel;
+	RR_TyreSlip = rf.data.telemetry.wheel[3].gripFract;
 	RR_TyreLoad = rf.data.telemetry.wheel[3].tireLoad;
 	RR_TyreTempIn = rf.data.telemetry.wheel[3].temperature[0];
 	RR_TyreTempMid = rf.data.telemetry.wheel[3].temperature[1];
