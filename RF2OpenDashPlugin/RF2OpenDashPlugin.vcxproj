@@ -127,12 +127,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="OpenDashPlugin.cpp" />
+    <ClCompile Include="TelemetryData.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\DataTransfer.hpp" />
     <ClInclude Include="..\include\InternalsPlugin.hpp" />
+    <ClInclude Include="..\include\OpenDashPlugin.hpp" />
     <ClInclude Include="..\include\PluginObjects.hpp" />
-    <ClInclude Include="OpenDashPlugin.hpp" />
+    <ClInclude Include="..\include\TelemetryData.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
