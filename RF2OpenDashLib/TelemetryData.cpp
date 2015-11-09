@@ -5,37 +5,41 @@
 #include <string>
 
 HANDLE hMapFile;
-LPCTSTR pBuf;
+LPCTSTR pBuf = NULL;
 UnifiedRfData data;
 
 bool TelemetryData::Connect()
 {
-	hMapFile = OpenFileMapping(
-		FILE_MAP_ALL_ACCESS,   // read/write access
-		FALSE,                 // do not inherit the name
-		transferBufferName);               // name of mapping object
-
-	if (hMapFile == NULL)
-	{
-		_tprintf(TEXT("Could not open file mapping object (%d).\n"),
-			GetLastError());
-		return false;
-	}
-
-	pBuf = (LPTSTR)MapViewOfFile(hMapFile, // handle to map object
-		FILE_MAP_READ,  // read permission
-		0,
-		0,
-		transferBufferSize);
-
 	if (pBuf == NULL)
 	{
-		_tprintf(TEXT("Could not map view of file (%d).\n"),
-			GetLastError());
+		hMapFile = OpenFileMapping(
+			FILE_MAP_ALL_ACCESS,   // read/write access
+			FALSE,                 // do not inherit the name
+			transferBufferName);               // name of mapping object
 
-		CloseHandle(hMapFile);
+		if (hMapFile == NULL)
+		{
+			_tprintf(TEXT("Could not open file mapping object (%d).\n"),
+				GetLastError());
+			return false;
+		}
 
-		return false;
+		pBuf = (LPTSTR)MapViewOfFile(hMapFile, // handle to map object
+			FILE_MAP_READ,  // read permission
+			0,
+			0,
+			transferBufferSize);
+
+		if (pBuf == NULL)
+		{
+			_tprintf(TEXT("Could not map view of file (%d).\n"),
+				GetLastError());
+
+			CloseHandle(hMapFile);
+
+			return false;
+		}
+
 	}
 	memcpy(&rFactorVersion, pBuf, sizeof(pBuf));
 	return true;
@@ -70,7 +74,7 @@ bool TelemetryData::Read()
 
 void TelemetryData::Disconnect()
 {
-	UnmapViewOfFile(pBuf);
+	UnmapViewOfFile(pBuf); pBuf = NULL;
 	CloseHandle(hMapFile);
 	rFactorVersion = 0;
 }

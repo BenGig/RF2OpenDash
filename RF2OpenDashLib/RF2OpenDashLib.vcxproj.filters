@@ -41,7 +41,7 @@
     <ClCompile Include="OpenDash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JsonOpenDash.cpp">
+    <ClCompile Include="TelemetryData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
