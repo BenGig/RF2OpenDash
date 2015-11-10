@@ -13,17 +13,6 @@ public:
 
 	int RfVersion();	// 0 designates not connected
 
-	OpenDash();
-	~OpenDash();
-
 private:
 
 };
-
-OpenDash::OpenDash()
-{
-}
-
-OpenDash::~OpenDash()
-{
-}

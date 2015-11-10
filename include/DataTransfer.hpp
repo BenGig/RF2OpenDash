@@ -186,7 +186,7 @@ struct EventInfo
 	double currentTime;
 	double endTime;
 	long maxLaps;
-	double lapDist;
+	double lapDist;					// current distance around track
 	long numVehicles;
 	unsigned char gamePhase;
 	signed char yellowFlagState;
@@ -205,8 +205,8 @@ struct EventInfo
 	double offPathWetness;
 };
 
-TCHAR transferBufferName[] = TEXT("\rf2transferMappingObject");
-int transferBufferSize = 64000;
+static TCHAR transferBufferName[] = TEXT("\rf2transferMappingObject");
+static int transferBufferSize = 64000;
 
 
 // Written to shared memory each time rFactor updates values

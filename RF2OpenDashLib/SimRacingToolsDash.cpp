@@ -1,6 +1,6 @@
 #include "..\include\SimRacingToolsDash.hpp"
 #include "..\include\TelemetryData.hpp"
-#include "..\include\DataTransfer.hpp"
+//#include "..\include\DataTransfer.hpp"
 
 bool RfData::Update()
 {
